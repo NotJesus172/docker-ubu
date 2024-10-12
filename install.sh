@@ -34,47 +34,37 @@ else
   echo "If you would like to install it in the future return to this directory and run './docker-compose.sh' to begin the installation."
   sleep 3
 fi
-#	Portainer ee install prompt:
+# Portainer install prompt:
 clear
-echo "Would you like to install the portainer-ee docker container? (y/n)"
-read eeInstall
-if [[ $eeInstall == "y" || $eeInstall == "Y" ]]; then
+echo "Would you like to install portainer? (y/n)"
+read portainerInstall
+if [[ $portainerInstall == "y" || $portainerInstall == "Y" ]]; then
+  echo "Which version of portainer would you like to install:
+  1 - Portainer Business Edition
+  2 - Portainer Community Edition
+  3 - Portainer Agent"
+  read portainerVersion
   echo "Very well."
-  # Install portainer server docker container:
-  sudo ./portainer-ee.sh
+  case $portainerVersion in
+    1)
+      # Install portainer ee docker container:
+      sudo ./portainer-ee.sh
+      ;;
+    2)
+      # Install portainer server docker container:
+      sudo ./portainer-ce.sh
+      ;;
+    3)
+      # Install portainer agent docker container:
+      sudo ./portainer-agent.sh
+      ;;
+  esac
 else
   # Future install instructions:
-  echo "Very well, portainer-server will NOT be installed now."
-  echo "If you would like to install it in the future return to this directory and run './portainer-server.sh' to begin the installation."
-  sleep 3
-fi
-#	Portainer ce install prompt:
-clear
-echo "Would you like to install the portainer-ce docker container? (y/n)"
-read ceInstall
-if [[ $ceInstall == "y" || $ceInstall == "Y" ]]; then
-  echo "Very well."
-  # Install portainer server docker container:
-  sudo ./portainer-ce.sh
-else
-  # Future install instructions:
-  echo "Very well, portainer-server will NOT be installed now."
-  echo "If you would like to install it in the future return to this directory and run './portainer-server.sh' to begin the installation."
-  sleep 3
-fi
-#	Portainer agent install prompt:
-clear
-echo "Would you like to install the portainer-agent docker container? (y/n)"
-read agentInstall
-if [[ $agentInstall == "y" || $agentInstall == "Y" ]]; then
-  echo "Very well."
-  # Install portainer agent docker container:
-  sudo ./portainer-agent.sh
-else
-  #	Future install instructions:
-  echo "Very well, portainer-agent will NOT be installed now."
-  echo "If you would like to install it in the future return to this directory and run './portainer-agent.sh' to begin the installation."
-  sleep 3
+  echo "Very well, portainer will NOT be installed now."
+  sleep 1
+  echo "If you would like to install portainer in the future, return to this directory and run the script for the version you would like to install."
+  sleep 2
 fi
 #	Clear before ending:
 clear

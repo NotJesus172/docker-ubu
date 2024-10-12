@@ -3,7 +3,7 @@
 #   Pull the portainer/agent:lts docker container image:
 echo "Pulling the portainer/agent:lts docker container."
 sudo docker pull portainer/agent:lts
-#   Run the portainer/agent:lts docker container image:
+#   Run the portainer/agent:lts docker container:
 echo "Running the portainer/agent:lts docker container."
 docker run -d \
     -p 9001:9001 \

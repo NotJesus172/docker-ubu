@@ -3,7 +3,7 @@
 #	Pull the portainer-ee:lts docker container image:
 echo "Pulling the portainer/portainer-ee:lts docker container."
 sudo docker pull portainer/portainer-ee:lts
-#	Run the portainer-ee:lts docker container: 
+#	Run the portainer-ee:lts docker container:
 echo "Running the portainer/portainer-ee:lts docker container."
 sudo docker volume create portainer_data
 sudo docker run -d \
